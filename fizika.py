@@ -10,6 +10,7 @@ root.withdraw()
 from tkinter import messagebox
  
 CSV_OSZLOP_SZAM = 35
+PONTHATAR = 40
 
 CSV_FILE_URLS = [
     'https://docs.google.com/spreadsheets/d/e/2PACX-1vQq2Fb2v02ncoeFV7HDYh7gdAJvxdlO9Q9RSm1hQADPCrx_apAxJ7FnpKWvm9dC0vGeltdOAvvaYixn/pub?output=csv',
@@ -25,7 +26,7 @@ for url in CSV_FILE_URLS:
 
 #print(csvUtf8)
 
-megirtaSzamlalo = 0
+javitvaSzamlalo = 0
 atmentSzamlalo = 0
     
 for csvString in csvUtf8:
@@ -33,19 +34,19 @@ for csvString in csvUtf8:
     csvReader = csv.reader(stringIO, delimiter=',')
     for row in csvReader:
         ertek = row[CSV_OSZLOP_SZAM].split(',')[0]
-        #print(ertek, end="")
+        print(ertek, end="")
         try:
             ertekSzamkent = int(ertek)
-            megirtaSzamlalo+= 1
-            if ertekSzamkent >= 40:
+            javitvaSzamlalo+= 1
+            if ertekSzamkent >= PONTHATAR:
                 atmentSzamlalo += 1
-            #print(" - megszámolva, eddig megírta: ", megirtaSzamlalo, ", ebből átment: ", atmentSzamlalo, sep="")
+            print(" - megszámolva, eddig megírta: ", javitvaSzamlalo, ", ebből átment: ", atmentSzamlalo, sep="")
         except Exception:
             pass
 
-bukasSzazalek = round(((1-(atmentSzamlalo/megirtaSzamlalo)) * 100), 2)
+bukasSzazalek = round(((1-(atmentSzamlalo/javitvaSzamlalo)) * 100), 2)
 
-szoveg = "Ennyit javítottak ki az IA0 és IB0 csoportban idáig: "+str(megirtaSzamlalo)+", ebből ennyi ment át: "+str(atmentSzamlalo)+".\n"+\
+szoveg = "Ennyit javítottak ki az IA0 és IB0 csoportban idáig: "+str(javitvaSzamlalo)+", ebből ennyi ment át: "+str(atmentSzamlalo)+".\n"+\
          "Azaz az évfolyam nem iMSc-s részének "+str(bukasSzazalek)+"%-a megbukott :)"   
 
 print(szoveg)
