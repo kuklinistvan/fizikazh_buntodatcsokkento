@@ -1,4 +1,4 @@
-# Bűntudat csökkentő fizika ZH bukási statisztika szkript
+# Bűntudat csökkentő fizika ZH sikeresség statisztika szkript
 
 Ez a kis kód a tanszéki honlapon fellelhető nyilvános táblázatokból gombnyomásra kiszámolja, hogy hány ZH-t javítottak ki idáig, ebből hány embernek lett az meg, és hány százaléka bukott meg az évfolyam nem iMSc-s részének.
 
