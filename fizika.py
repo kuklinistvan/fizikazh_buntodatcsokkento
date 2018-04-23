@@ -4,6 +4,11 @@ import urllib.request
 import csv
 import io
 
+import tkinter as tk
+root = tk.Tk()
+root.withdraw()
+from tkinter import messagebox
+ 
 CSV_OSZLOP_SZAM = 35
 
 CSV_FILE_URLS = [
@@ -38,8 +43,10 @@ for csvString in csvUtf8:
         except Exception:
             pass
 
-print("Ennyit javítottak ki idáig: ", megirtaSzamlalo, ", ebből ennyi ment át: ", atmentSzamlalo, ".", sep="")
-
 bukasSzazalek = round(((1-(atmentSzamlalo/megirtaSzamlalo)) * 100), 2)
 
-print("Azaz az évfolyam nem iMSc-s részének ", bukasSzazalek, "%-a megbukott :)", sep="")
+szoveg = "Ennyit javítottak ki az IA0 és IB0 csoportban idáig: "+str(megirtaSzamlalo)+", ebből ennyi ment át: "+str(atmentSzamlalo)+".\n"+\
+         "Azaz az évfolyam nem iMSc-s részének "+str(bukasSzazalek)+"%-a megbukott :)"   
+
+print(szoveg)
+messagebox.showinfo("Statisztika", szoveg)
